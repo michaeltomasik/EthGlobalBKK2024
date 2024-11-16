@@ -7,6 +7,12 @@ import * as PIXI from 'pixi.js';
 
 const bunnyTexture = PIXI.Texture.from(Token) //PIXI.Texture.from('https://pixijs.com/assets/bunny.png');
 
+const style = new PIXI.TextStyle({
+    fill: '#ffffff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    // Add any other required properties if needed
+  });
 const DraggableBunny = ({ initialX, initialY, name, onCollision, onFeed, tokenAddress }) => {
 
     const positionRef = useRef({ x: initialX, y: initialY });
@@ -69,7 +75,7 @@ const DraggableBunny = ({ initialX, initialY, name, onCollision, onFeed, tokenAd
                 text={name}
                 anchor={0.5}
                 y={-50} // Position the text above the bunny
-                style={{ fill: '#ffffff', fontSize: 16, fontWeight: 'bold' }}
+                style={style}
             />
         </Container>
     );

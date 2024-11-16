@@ -8,7 +8,7 @@ import moodeng_default from '../assets/feed_me.png'
 import background from '../assets/background3.png'
 import DraggableBunny from './DraggableBunny';
 import {ethers} from 'ethers'
-import { parseAbi } from 'viem'
+import { Abi, parseAbi } from 'viem'
 
 const bunnyTexture = PIXI.Texture.from('https://pixijs.com/assets/bunny.png');
 const openMouthBunnyTexture = PIXI.Texture.from('https://pixijs.com/assets/eggHead.png'); // Replace with open-mouth image URL
@@ -19,19 +19,36 @@ const backgroundStage = PIXI.Texture.from(background);
 // const erc20Abi = [
 //     "function transferFrom(address src, address dst, uint wad) public returns (bool)",
 // ];
+const style = new PIXI.TextStyle({
+    fill: '#ffffff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    // Add any other required properties if needed
+  });
+  
 import erc20Abi from '../contracts/erc20.json'
-const ERC20_ABI = [
-    {
-      constant: false,
-      inputs: [
-        { name: "_to", type: "address" },
-        { name: "_value", type: "uint256" },
-      ],
-      name: "transfer",
-      outputs: [{ name: "", type: "bool" }],
-      type: "function",
-    },
-  ];
+const ERC20_ABI: Abi = [
+  {
+    constant: false,
+    inputs: [
+      { name: "_to", type: "address" },
+      { name: "_value", type: "uint256" },
+    ],
+    name: "transfer",
+    outputs: [{ name: "", type: "bool" }],
+    type: "function",
+    stateMutability: 'nonpayable', 
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "name",
+    outputs: [{ name: "", type: "string" }],
+    type: "function",
+    stateMutability: 'nonpayable', 
+  },
+  // Add other ERC-20 methods if required
+];
 
 const StaticBunny = ({ x, y, isOpenMouth }) => {
     return (
@@ -79,15 +96,15 @@ const PixiDragAndDrop = ({
 
         // If the draggable bunny is close enough on release, increment feed count and mark it as fed
         if (distance < threshold) {
-            writeContract({ 
-                abi: erc20Abi,
-                address: contractAddress,
-                functionName: 'transfer',
-                args: [
-                  BigInt('0xA0Cf798816D4b9b9866b5330EEa46a18382f251e'),
-                  tokenBalance,
-                ],
-             })
+            // writeContract({ 
+            //     abi: erc20Abi,
+            //     address: contractAddress,
+            //     functionName: 'transfer',
+            //     args: [
+            //       BigInt('0xA0Cf798816D4b9b9866b5330EEa46a18382f251e'),
+            //       tokenBalance,
+            //     ],
+            //  })
              const config = {
                 address: contractAddress,
                 abi: ERC20_ABI,
@@ -113,7 +130,8 @@ const PixiDragAndDrop = ({
                 tokens.map((token) => (token.tokenName === name ? { ...token, fed: true } : token))
             );
             setIsBunnyMouthOpen(false); // Close the mouth after feeding
-            const { hash } = await writeContract(config);
+            // @ts-ignore
+            const { hash } = await writeContract(config); 
             console.log(hash)
         }
     };
@@ -149,7 +167,7 @@ const PixiDragAndDrop = ({
                     text={`Feed Count: ${feedCount}`}
                     x={50}
                     y={50}
-                    style={{ fill: '#ffffff', fontSize: 24 }}
+                    style={style}
                 />
             </Stage>
         </div>

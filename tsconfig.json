@@ -1,9 +1,40 @@
 {
   "compilerOptions": {
-    "skipLibCheck": true, // Skip type checking of declaration files (node_modules, etc.)
-    "noEmitOnError": false, // Continue build even with TypeScript errors
-    "strict": false, // Disable all strict type-checking options
-    "allowJs": true, // Allow JavaScript files
-    "resolveJsonModule": true // Allow JSON imports
-  }
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
