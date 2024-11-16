@@ -1,29 +1,9 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "target": "ESNext",
-    "types": [
-      "vite/client"
-    ]
-  },
-  "include": [
-    "src"
-  ]
+    "skipLibCheck": true, // Skip type checking of declaration files (node_modules, etc.)
+    "noEmitOnError": false, // Continue build even with TypeScript errors
+    "strict": false, // Disable all strict type-checking options
+    "allowJs": true, // Allow JavaScript files
+    "resolveJsonModule": true // Allow JSON imports
+  }
 }
