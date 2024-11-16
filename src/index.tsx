@@ -74,13 +74,12 @@ export const rainbowWeb3AuthConnector = (): Wallet => ({
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'c5e4f68a42bee9df48927d0b2668ef5d',
-  chains: [mainnet, sepolia, polygon, celo, celoAlfajores],
+  chains: [mainnet, sepolia, polygon, celo, bitkubChain, mantle, base],
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
     [polygon.id]: http(),
     [celo.id]: http(),
-    [celoAlfajores.id]: http(),
     [bitkubChain.id]: http(),
     [mantle.id]: http(),
     [base.id]: http()
