@@ -7,7 +7,7 @@ import { rainbowWallet, metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css';
 import App from './App';
-import { sepolia, mainnet, polygon, celo, celoAlfajores } from "wagmi/chains";
+import { sepolia, mainnet, polygon,base, celo, celoAlfajores, mantle } from "wagmi/chains";
 
 import { Web3AuthConnector } from "@web3auth/web3auth-wagmi-connector";
 import { Web3Auth } from "@web3auth/modal";
@@ -15,6 +15,9 @@ import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { CHAIN_NAMESPACES, UX_MODE, WEB3AUTH_NETWORK } from "@web3auth/base";
 import { Wallet, WalletDetailsParams } from "@rainbow-me/rainbowkit";
 import { createConnector as createWagmiConnector } from "wagmi";
+
+
+import { bitkubChain } from './chains/bitkub'
 
 const clientId =
   "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"; // get from https://dashboard.web3auth.io
@@ -78,6 +81,9 @@ const config = getDefaultConfig({
     [polygon.id]: http(),
     [celo.id]: http(),
     [celoAlfajores.id]: http(),
+    [bitkubChain.id]: http(),
+    [mantle.id]: http(),
+    [base.id]: http()
   },
   wallets: [{
     groupName: 'Recommended',
