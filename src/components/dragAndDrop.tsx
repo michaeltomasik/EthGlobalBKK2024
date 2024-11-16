@@ -3,9 +3,9 @@ import { Stage, Container, Sprite, Text } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 import { useAccount, useBalance, useWriteContract } from 'wagmi';
 
-import moodeng_feed from '../assets/moodeng_feed.png'
-import moodeng_default from '../assets/feed_me.png'
-import background from '../assets/background3.png'
+import moodeng_feed from '../public/assets/moodeng_feed.png'
+import moodeng_default from '../public/assets/feed_me.png'
+import background from '../public/assets/background3.png'
 import DraggableBunny from './DraggableBunny';
 import {ethers} from 'ethers'
 import { Abi, parseAbi } from 'viem'

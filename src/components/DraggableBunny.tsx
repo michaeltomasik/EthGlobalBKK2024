@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { Container, Sprite, Text, useTick } from '@pixi/react';
 import { useWriteContract } from 'wagmi';
 
-import Token from '../assets/token3.png'
+import Token from '../public/assets/token3.png'
 import * as PIXI from 'pixi.js';
 
 const bunnyTexture = PIXI.Texture.from(Token) //PIXI.Texture.from('https://pixijs.com/assets/bunny.png');
